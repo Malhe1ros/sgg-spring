@@ -1,5 +1,7 @@
 package com.pds.sgg.index.entity.pessoa.fichaAtendimento;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,30 +18,6 @@ public class Consulta {
             generator = "consulta_sequence"
     )
     private Long id;
-    private String sala;
-    public Consulta (Long id,String sala) {
-        this.id = id;
-        this.sala = sala;
-    }
-
-    public Consulta() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public  String getSala() {
-        return sala;
-    }
-    public void setSala(String sala) {
-        this.sala = sala;
-    }
-
-    /*
     private String sala;
     private Date data;
     private StatusConsulta status;
@@ -95,5 +73,5 @@ public class Consulta {
 
     public void setIdFichaAtendimento(Long idFichaAtendimento) {
         this.idFichaAtendimento = idFichaAtendimento;
-    }*/
+    }
 }
