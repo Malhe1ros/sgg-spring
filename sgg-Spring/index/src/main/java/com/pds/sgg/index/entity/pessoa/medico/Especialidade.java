@@ -4,7 +4,21 @@ import com.pds.sgg.index.entity.pessoa.medico.Medico;
 
 import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Especialidade extends Medico {
+    @Id
+    @SequenceGenerator(
+            name = "especialidade_sequence",
+            sequenceName = "especialidade_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "especialidade_sequence"
+    )
     private Long idEspecialidade;
     private String descricao;
 

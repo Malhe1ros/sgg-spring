@@ -2,10 +2,22 @@ package com.pds.sgg.index.entity.clinica;
 
 
 import com.pds.sgg.index.entity.UnidadeHospitalar;
-
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table
 public class Clinica implements UnidadeHospitalar {
+    @Id
+    @SequenceGenerator(
+            name = "clinica_sequence",
+            sequenceName = "clinica_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "clinica_sequence"
+    )
     private Long id;
     private List<Long> idsPacientes;
 

@@ -3,11 +3,19 @@ package com.pds.sgg.index.entity;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "usuario")
+@Entity
+@Table
 public class Usuario {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @SequenceGenerator(
+        name = "usuario_sequence",
+        sequenceName = "usuario_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "usuario_sequence"
+    )
     private Integer id;
 
     private String name;

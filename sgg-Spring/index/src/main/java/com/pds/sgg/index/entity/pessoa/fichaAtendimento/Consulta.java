@@ -1,9 +1,6 @@
 package com.pds.sgg.index.entity.pessoa.fichaAtendimento;
 
-import jdk.jfr.Enabled;
-
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table

@@ -1,6 +1,20 @@
 package com.pds.sgg.index.entity.pessoa;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Pessoa {
+    @Id
+    @SequenceGenerator(
+        name = "pessoa_sequence",
+        sequenceName = "pessoa_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "pessoa_sequence"
+    )
     private Long id;
     private Long idUsuario;
     private String nome;

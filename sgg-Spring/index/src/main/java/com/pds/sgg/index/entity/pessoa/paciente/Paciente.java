@@ -1,11 +1,8 @@
 package com.pds.sgg.index.entity.pessoa.paciente;
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+
 @Entity
-@Table(name="OutroNome")
+@Table
 public class Paciente {
     @Id
     @SequenceGenerator(

@@ -2,7 +2,21 @@ package com.pds.sgg.index.entity.pessoa.fichaAtendimento;
 
 import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class FichaAtendimento {
+    @Id
+    @SequenceGenerator(
+            name = "ficha_atendimento_sequence",
+            sequenceName = "ficha_atendimento_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "ficha_atendimento_sequence"
+    )
     private Long id;
     private Long idPaciente;
     private Long idMedico;
