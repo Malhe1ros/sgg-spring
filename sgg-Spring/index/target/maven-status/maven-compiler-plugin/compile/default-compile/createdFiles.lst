@@ -4,6 +4,7 @@ com/pds/sgg/index/entity/pessoa/paciente/Paciente.class
 com/pds/sgg/index/controllers/ExamesController.class
 com/pds/sgg/index/IndexApplication.class
 com/pds/sgg/index/controllers/PacienteController.class
+com/pds/sgg/index/repository/ConsultaRepository.class
 com/pds/sgg/index/mainController.class
 com/pds/sgg/index/entity/pessoa/Pessoa.class
 com/pds/sgg/index/entity/pessoa/fichaAtendimento/Consulta.class
