@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 public class ConsultaController {
@@ -19,8 +19,8 @@ public class ConsultaController {
     public ResponseEntity getConsultasById (@PathVariable(value = "id") long id)
     {
         try{
-            Optional<Consulta> consulta = consultasDB.findById(id);
-            return new ResponseEntity<>(consulta, HttpStatus.OK);
+            List<Consulta> consultas = consultasDB.getConsultasByIdPaciente(id);
+            return new ResponseEntity<>(consultas, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

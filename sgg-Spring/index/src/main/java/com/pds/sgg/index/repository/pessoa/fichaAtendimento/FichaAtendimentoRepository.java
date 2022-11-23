@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FichaAtendimentoRepository extends JpaRepository<FichaAtendimento, Long> {
-    @Query("SELECT u FROM FichaAtendimento f WHERE f.idPaciente = ?1")
+    @Query("SELECT * FROM FichaAtendimento f WHERE f.idPaciente = ?1")
     List<FichaAtendimento> getFichasAtendimentoByPaciente(Long id);
 }

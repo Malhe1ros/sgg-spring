@@ -39,16 +39,16 @@ public class Exames {
     public Boolean getRealizado() {
         return realizado;
     }
-    public void setId() {
+    public void setId(Long id) {
         this.id = id;
     }
-    public void setIdPaciente() {
+    public void setIdPaciente(Long idPaciente) {
         this.idPaciente = idPaciente;
     }
-    public void setDescricao() {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public void  setRealizado() {
+    public void  setRealizado(Boolean realizado) {
         this.realizado = realizado;
     }
 }
