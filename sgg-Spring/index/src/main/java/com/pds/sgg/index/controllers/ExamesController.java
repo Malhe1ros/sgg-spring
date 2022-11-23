@@ -2,21 +2,40 @@ package com.pds.sgg.index.controllers;
 
 import com.pds.sgg.index.entity.pessoa.fichaAtendimento.Exames;
 import com.pds.sgg.index.entity.pessoa.paciente.Paciente;
+import com.pds.sgg.index.repository.pessoa.fichaAtendimento.ExamesRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class ExamesController {
-    @RequestMapping(value = "/exame/{id}", method =  RequestMethod.GET)
-    public String getExameByPaciente (@PathVariable(value = "id") long id)
-    {
-        //Usar o find através do ID do paciente fornecido.
-        return "Exame único retornado com sucesso!";
+    @Autowired
+    ExamesRepository examesDB;
 
+    @RequestMapping(value = "/exame/{id}", method =  RequestMethod.GET)
+    public ResponseEntity getExameByPaciente (@PathVariable(value = "id") long id)
+    {
+        try{
+            Optional<Exames> exame = examesDB.findById(id);
+            return new ResponseEntity<>(exame, HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @RequestMapping(value = "/exame", method = RequestMethod.POST)
-    public String cadastrarExame(@RequestBody Exames exame) {
-        //Persistir o exame no banco antes de retornar mensagem de retorno
-        return "Exame cadastrado!";
+    public ResponseEntity cadastrarExame(@RequestBody Exames exame) {
+        try{
+            examesDB.save(exame);
+            return new ResponseEntity<>(exame, HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
