@@ -22,7 +22,7 @@ public class FichaAtendimentoController {
     public ResponseEntity getFichasAtendimentoByPaciente (@PathVariable(value = "id") long id)
     {
         try{
-            List<FichaAtendimento> consulta = fichaAtendimentoDB.getFichasAtendimentoByPaciente(id);
+            List<FichaAtendimento> consulta = null/*fichaAtendimentoDB.getFichasAtendimentoByPaciente(id)*/;
             return new ResponseEntity<>(consulta, HttpStatus.OK);
         }
         catch(Exception e){

@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ExamesRepository extends JpaRepository<Exames, Long> {
-    @Query("SELECT * FROM Exames e WHERE e.idPaciente = ?1")
-    List<Exames> getAllExamesByPaciente(Long id);
+    //@Query("SELECT * FROM Exames e WHERE e.idPaciente = ?1")
+    //List<Exames> getAllExamesByPaciente(Long id);
 }

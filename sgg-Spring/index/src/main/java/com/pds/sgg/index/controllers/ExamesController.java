@@ -21,7 +21,8 @@ public class ExamesController {
     public ResponseEntity getAllExamesByPaciente (@PathVariable(value = "id") long id)
     {
         try{
-            List<Exames> exame = examesDB.getAllExamesByPaciente(id);
+            List<Exames> exame = null;
+            /*examesDB.getAllExamesByPaciente(id);*/
             return new ResponseEntity<>(exame, HttpStatus.OK);
         }
         catch(Exception e){

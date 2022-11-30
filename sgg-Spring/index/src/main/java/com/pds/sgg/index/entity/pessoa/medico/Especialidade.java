@@ -3,11 +3,11 @@ package com.pds.sgg.index.entity.pessoa.medico;
 import com.pds.sgg.index.entity.pessoa.medico.Medico;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table
 public class Especialidade extends Medico {
     @Id
     @SequenceGenerator(
@@ -19,21 +19,25 @@ public class Especialidade extends Medico {
             strategy = GenerationType.SEQUENCE,
             generator = "especialidade_sequence"
     )
-    private Long idEspecialidade;
+    private Long id;
     private String descricao;
 
-    public Especialidade(Long idMedico, Long IdPessoa, List<Long> idsEspecialidades, Long idUsuario, String nome, String email, String telefone, String endereco) {
-        super(idMedico, IdPessoa, idsEspecialidades, idUsuario, nome, email, telefone, endereco);
+    public Especialidade(){
+
     }
 
-    public Long getIdEspecialidade() {
-        return idEspecialidade;
+    public Especialidade(Long id, Long IdPessoa, Set<Especialidade> idsEspecialidades, Long idUsuario, String nome, String email, String telefone, String endereco) {
+        super(id, IdPessoa, idsEspecialidades, idUsuario, nome, email, telefone, endereco);
+    }
+
+    public Long getId() {
+        return id;
     }
     public  String getDescricao() {
         return descricao;
     }
-    public void setIdEspecialidade(Long idEspecialidade) {
-        this.idEspecialidade = idEspecialidade;
+    public void setId(Long id) {
+        this.id = id;
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;

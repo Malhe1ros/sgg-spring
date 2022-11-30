@@ -2,11 +2,11 @@ package com.pds.sgg.index.entity.pessoa.medico;
 
 import com.pds.sgg.index.entity.pessoa.Pessoa;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table
 public class Medico extends Pessoa {
     @Id
     @SequenceGenerator(
@@ -18,32 +18,38 @@ public class Medico extends Pessoa {
             strategy = GenerationType.SEQUENCE,
             generator = "medico_sequence"
     )    
-    private Long idMedico;
+    private Long id;
 
     private Long IdPessoa;
-    private List<Long> idsEspecialidades;
 
-    public Medico(Long idMedico, Long IdPessoa, List<Long> idsEspecialidades, Long idUsuario, String nome, String email, String telefone, String endereco) {
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Especialidade> idsEspecialidades;
+
+    public Medico(){
+
+    }
+
+    public Medico(Long id, Long IdPessoa, Set<Especialidade> idsEspecialidades, Long idUsuario, String nome, String email, String telefone, String endereco) {
         super(IdPessoa, idUsuario,nome,email,telefone, endereco);
-        this.idMedico = idMedico;
+        this.id = id;
         this.IdPessoa = IdPessoa;
         this.idsEspecialidades = idsEspecialidades;
     }
 
-    public Long getIdMedico() {return idMedico;}
+    public Long getId() {return id;}
     public Long getIdPessoa() {
         return IdPessoa;
     }
-    public List<Long> getIdsEspecialidades() {
+    public Set<Especialidade> getIdsEspecialidades() {
         return idsEspecialidades;
     }
-    public void setId(Long idMedico) {
-        this.idMedico = idMedico;
+    public void setId(Long id) {
+        this.id = id;
     }
     public void setIdPessoa(Long IdPessoa) {
         this.IdPessoa = IdPessoa;
     }
-    public void setIdsEspecialidades(List<Long> idsEspecialidades) {
+    public void setIdsEspecialidades(Set<Especialidade> idsEspecialidades) {
         this.idsEspecialidades = idsEspecialidades;
     }
 

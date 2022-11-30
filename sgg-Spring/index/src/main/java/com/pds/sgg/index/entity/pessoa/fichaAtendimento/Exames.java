@@ -20,6 +20,10 @@ public class Exames {
     private String descricao;
     private Boolean realizado;
 
+    public Exames(){
+
+    }
+
     public Exames(Long id, Long idPaciente, String descricao, Boolean realizado){
         this.id = id;
         this.idPaciente = idPaciente;

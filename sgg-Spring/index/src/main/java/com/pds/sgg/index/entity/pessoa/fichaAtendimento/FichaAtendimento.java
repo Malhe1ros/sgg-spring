@@ -1,6 +1,7 @@
 package com.pds.sgg.index.entity.pessoa.fichaAtendimento;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -23,9 +24,15 @@ public class FichaAtendimento {
     private Long idEspecialidade;
     private Long idConsulta;
     private String anotacoes;
-    private List<Exames> exames;
 
-    public FichaAtendimento(Long id, Long idPaciente, Long idMedico, Long idEspecialidade, Long idConsulta, String anotacoes, List<Exames> exames) {
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Exames> exames;
+
+    public FichaAtendimento(){
+
+    }
+
+    public FichaAtendimento(Long id, Long idPaciente, Long idMedico, Long idEspecialidade, Long idConsulta, String anotacoes, Set<Exames> exames) {
         this.id = id;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
@@ -53,7 +60,7 @@ public class FichaAtendimento {
     public String getAnotacoes() {
         return anotacoes;
     }
-    public List<Exames> getExames() {
+    public Set<Exames> getExames() {
         return exames;
     }
     public void setId(Long id) {
@@ -74,7 +81,7 @@ public class FichaAtendimento {
     public void setAnotacoes(String anotacoes) {
         this.anotacoes = anotacoes;
     }
-    public void setExames (List<Exames>exames) {
+    public void setExames (Set<Exames>exames) {
         this.exames = exames;
     }
 }

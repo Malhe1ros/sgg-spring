@@ -19,7 +19,7 @@ public class ConsultaController {
     public ResponseEntity getConsultasById (@PathVariable(value = "id") long id)
     {
         try{
-            List<Consulta> consultas = consultasDB.getConsultasByIdPaciente(id);
+            List<Consulta> consultas = null/*consultasDB.getConsultasByIdPaciente(id)*/;
             return new ResponseEntity<>(consultas, HttpStatus.OK);
         }
         catch(Exception e){

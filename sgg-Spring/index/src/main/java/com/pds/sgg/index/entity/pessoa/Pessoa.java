@@ -22,6 +22,10 @@ public class Pessoa {
     private String telefone;
     private String endereco;
 
+    public Pessoa(){
+
+    };
+
     public Pessoa(Long id, Long idUsuario, String nome, String email, String telefone, String endereco) {
         this.id = id;
         this.idUsuario = idUsuario;

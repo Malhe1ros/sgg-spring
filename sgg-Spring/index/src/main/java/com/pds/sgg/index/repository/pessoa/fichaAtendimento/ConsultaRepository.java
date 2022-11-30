@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
-    @Query("SELECT * FROM Consulta c INNER JOIN FichaAtendimento f ON c.idFichaAtendimento = f.id WHERE f.idPaciente = ?1")
-    List<Consulta> getConsultasByIdPaciente(Long id);
+    //@Query("SELECT * FROM Consulta c INNER JOIN FichaAtendimento f ON c.idFichaAtendimento = f.id WHERE f.idPaciente = ?1")
+    //List<Consulta> getConsultasByIdPaciente(Long id);
 }
