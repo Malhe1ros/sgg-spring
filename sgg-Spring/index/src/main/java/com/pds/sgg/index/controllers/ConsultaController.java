@@ -18,11 +18,27 @@ public class ConsultaController {
     @RequestMapping(value = "/consultas/{id}", method =  RequestMethod.GET)
     public ResponseEntity getConsultasById (@PathVariable(value = "id") long id)
     {
+
         try{
-            List<Consulta> consultas = null/*consultasDB.getConsultasByIdPaciente(id)*/;
+            List<Consulta> consultas = consultasDB.getConsultasByIdPaciente(id);
             return new ResponseEntity<>(consultas, HttpStatus.OK);
         }
         catch(Exception e){
+
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/consultas/all", method =  RequestMethod.GET)
+    public ResponseEntity getAllConsultas ()
+    {
+
+        try{
+            List<Consulta> consultas = consultasDB.getAll();
+            return new ResponseEntity<>(consultas, HttpStatus.OK);
+        }
+        catch(Exception e){
+
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

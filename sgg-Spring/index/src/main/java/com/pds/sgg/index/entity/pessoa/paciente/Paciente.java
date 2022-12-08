@@ -18,10 +18,13 @@ public class Paciente {
     private Long idPessoa;
     private TipoPaciente tipoPaciente;
 
-    public Paciente(Long id, Long idPessoa, TipoPaciente tipoPaciente) {
+    private Boolean isUrgencia;
+
+    public Paciente(Long id, Long idPessoa, TipoPaciente tipoPaciente,Boolean isUrgencia) {
         this.id = id;
         this.idPessoa = idPessoa;
         this.tipoPaciente = tipoPaciente;
+        this.isUrgencia = isUrgencia;
     }
 
     public Paciente() {
@@ -50,5 +53,23 @@ public class Paciente {
 
     public void setTipoPaciente(TipoPaciente tipoPaciente) {
         this.tipoPaciente = tipoPaciente;
+    }
+
+    public Boolean getUrgencia() {
+        return isUrgencia;
+    }
+
+    public void setUrgencia(Boolean urgencia) {
+        this.isUrgencia = urgencia;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "id=" + id +
+                ", idPessoa=" + idPessoa +
+                ", tipoPaciente=" + tipoPaciente +
+                ", isUrgencia=" + isUrgencia +
+                '}';
     }
 }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PacienteController {
+public class  PacienteController {
     @Autowired
     PacienteRepository pacienteDB;
 
@@ -90,6 +90,10 @@ public class PacienteController {
     @RequestMapping(value = "/paciente/cadastrar", method =  RequestMethod.POST)
     public ResponseEntity cadastrarPaciente (@RequestBody Paciente paciente)
     {
+        System.out.println(paciente);
+        if(paciente.getTipoPaciente()==TipoPaciente.PRONTO_SOCORRO && paciente.getUrgencia()==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         try{
             pacienteDB.save(paciente);
             

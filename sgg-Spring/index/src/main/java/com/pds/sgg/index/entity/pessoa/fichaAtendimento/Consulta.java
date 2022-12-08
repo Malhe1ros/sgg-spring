@@ -74,4 +74,15 @@ public class Consulta {
     public void setIdFichaAtendimento(Long idFichaAtendimento) {
         this.idFichaAtendimento = idFichaAtendimento;
     }
+
+    @Override
+    public String toString() {
+        return "Consulta{" +
+                "id=" + id +
+                ", sala='" + sala + '\'' +
+                ", data=" + data +
+                ", status=" + status +
+                ", idFichaAtendimento=" + idFichaAtendimento +
+                '}';
+    }
 }
