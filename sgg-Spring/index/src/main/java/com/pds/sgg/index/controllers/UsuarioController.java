@@ -1,6 +1,6 @@
 package com.pds.sgg.index.controllers;
 
-import com.pds.sgg.index.entity.pessoa.Pessoa;
+import com.pds.sgg.index.entity.Usuario;
 import com.pds.sgg.index.repository.DatabaseConnection.Database;
 
 import java.util.List;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/pessoa")
-public class PessoaController {
-    @RequestMapping(value = "/getPessoaById/{id}", method =  RequestMethod.GET)
-    public ResponseEntity getPessoaById (@PathVariable(value = "id") long id)
+@RequestMapping("/usuario")
+public class UsuarioController {
+    @RequestMapping(value = "/getUsuarioById/{id}", method =  RequestMethod.GET)
+    public ResponseEntity getUsuarioById (@PathVariable(value = "id") long id)
     {
         try{
-            Pessoa p = Database.getInstance().pessoaFindById(id);
-            if(p != null){
-                return new ResponseEntity<>(p, HttpStatus.OK);
+            Usuario u = Database.getInstance().usuarioFindById(id);
+            if(u != null){
+                return new ResponseEntity<>(u, HttpStatus.OK);
             }else{
                 return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);
             }
@@ -32,13 +32,13 @@ public class PessoaController {
         }
     }
 
-    @RequestMapping(value = "/getAllPessoas", method =  RequestMethod.GET)
-    public ResponseEntity getAllPessoas ()
+    @RequestMapping(value = "/getAllUsuarios", method =  RequestMethod.GET)
+    public ResponseEntity getAllUsuarios ()
     {
         try{
-            List<Pessoa> p = Database.getInstance().pessoasGetAll();
+            List<Usuario> u = Database.getInstance().usuarioGetAll();
 
-            return new ResponseEntity<>(p, HttpStatus.OK);
+            return new ResponseEntity<>(u, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -46,12 +46,12 @@ public class PessoaController {
     }
 
     @RequestMapping(value = "", method =  RequestMethod.POST)
-    public ResponseEntity cadastrarPessoa (@RequestBody Pessoa pessoa)
+    public ResponseEntity cadastrarUsuario (@RequestBody Usuario usuario)
     {
         try{
-            pessoa = Database.getInstance().pessoaSave(pessoa);
+            usuario = Database.getInstance().usuarioSave(usuario);
 
-            return new ResponseEntity<>(pessoa, HttpStatus.OK);
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -59,17 +59,15 @@ public class PessoaController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity atualizarPessoa(@RequestBody Pessoa pessoa, @PathVariable(value = "id") long id) {
+    public ResponseEntity atualizarUsuario(@RequestBody Usuario usuario, @PathVariable(value = "id") long id) {
         try{
-            Pessoa p = Database.getInstance().pessoaFindById(id);
-            if(p != null){
-                p.setEmail(pessoa.getEmail());
-                p.setEndereco(pessoa.getEndereco());
-                p.setIdUsuario(pessoa.getIdUsuario());
-                p.setNome(pessoa.getNome());
-                p.setTelefone(pessoa.getTelefone());
-                Database.getInstance().pessoaSave(p);
-                return new ResponseEntity<>(p, HttpStatus.OK);
+            Usuario u = Database.getInstance().usuarioFindById(id);
+            if(u != null){
+                u.setEmail(usuario.getEmail());
+                u.setName(usuario.getName());
+                u.setPassword(usuario.getPassword());
+                Database.getInstance().usuarioSave(u);
+                return new ResponseEntity<>(u, HttpStatus.OK);
             } else{
                 return new ResponseEntity<>("Entidade não encontrada.", HttpStatus.FORBIDDEN);
             }            
@@ -80,10 +78,10 @@ public class PessoaController {
     }    
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deletarPessoa(@PathVariable(value = "id") long id) {
+    public ResponseEntity deletarUsuario(@PathVariable(value = "id") long id) {
         try{
-            if(Database.getInstance().pessoaFindById(id) != null){
-                Database.getInstance().pessoaDeleteById(id);
+            if(Database.getInstance().usuarioFindById(id) != null){
+                Database.getInstance().usuarioDeleteById(id);
                 return new ResponseEntity<>(null, HttpStatus.OK);
             } else{
                 return new ResponseEntity<>(null, HttpStatus.FORBIDDEN);

@@ -16,26 +16,29 @@ public class Usuario {
         strategy = GenerationType.SEQUENCE,
         generator = "usuario_sequence"
     )
-    private Integer id;
+    private Long id;
 
     private String name;
 
     private String email;
 
+    private String password;
+
     public Usuario(){
     }
 
-    public Usuario(Integer id, String name, String email) {
+    public Usuario(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.password = password;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -54,4 +57,12 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }    
 }

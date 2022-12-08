@@ -1,8 +1,5 @@
 package com.pds.sgg.index.entity.pessoa.medico;
 
-import com.pds.sgg.index.entity.pessoa.medico.Medico;
-
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
