@@ -22,12 +22,25 @@ public class FichaAtendimentoController {
     public ResponseEntity getFichasAtendimentoByPaciente (@PathVariable(value = "id") long id)
     {
         try{
-            List<FichaAtendimento> consulta = null;
-            fichaAtendimentoDB.getFichasAtendimentoByPaciente(id);
-            return new ResponseEntity<>(consulta, HttpStatus.OK);
+            List<FichaAtendimento> fichas = fichaAtendimentoDB.getFichasAtendimentoByPaciente(id);
+            return new ResponseEntity<>(fichas, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @RequestMapping(value = "/fichasAtendimento/all", method =  RequestMethod.GET)
+    public ResponseEntity getAllConsultas ()
+    {
+
+        try{
+            List<FichaAtendimento> fichas = fichaAtendimentoDB.findAll();
+            return new ResponseEntity<>(fichas, HttpStatus.OK);
+        }
+        catch(Exception e){
+
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }    
 }
