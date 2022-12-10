@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
-
+/**
+ * Entidade dos Médicos
+ */
 @Entity
 public class Medico extends Pessoa {
     @Id

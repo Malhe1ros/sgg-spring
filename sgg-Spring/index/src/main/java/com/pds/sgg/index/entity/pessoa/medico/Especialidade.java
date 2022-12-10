@@ -4,6 +4,9 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+/**
+ * Entidade das especialidades dos Médicos
+ */
 @Entity
 public class Especialidade extends Medico {
     @Id

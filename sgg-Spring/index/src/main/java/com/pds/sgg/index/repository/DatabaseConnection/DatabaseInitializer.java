@@ -13,6 +13,9 @@ import com.pds.sgg.index.repository.pessoa.fichaAtendimento.FichaAtendimentoRepo
 import com.pds.sgg.index.repository.pessoa.medico.MedicoRepository;
 import com.pds.sgg.index.repository.pessoa.paciente.PacienteRepository;
 
+/**
+ * Rest Controller responsável por inicializar a conexão com o banco de dados
+ */
 @RestController
 public class DatabaseInitializer {
     @Autowired

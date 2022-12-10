@@ -3,6 +3,9 @@ import javax.persistence.*;
 
 @Entity
 @Table
+/**
+ * Entidade dos Pacientes
+ */
 public class Paciente {
     @Id
     @SequenceGenerator(

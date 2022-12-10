@@ -7,6 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Table
+/**
+ * Entidade das fichas de Atendimento
+ */
 public class FichaAtendimento {
     @Id
     @SequenceGenerator(

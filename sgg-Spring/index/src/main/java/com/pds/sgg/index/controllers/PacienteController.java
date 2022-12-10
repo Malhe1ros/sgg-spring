@@ -15,9 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller responsável pelas rotas dos Pacientes
+ */
 @RestController
 @RequestMapping("/paciente")
 public class  PacienteController {
+    /**
+     * Retorna um paciente específico
+     *
+     * @param long Recebe o ID de um paciente
+     *
+     * @return  retorna uma Response entity com status "Ok" e o paciente ou "Erro"
+     */
     @RequestMapping(value = "/getPacienteById/{id}", method =  RequestMethod.GET)
     public ResponseEntity getFichasAtendimentoByPaciente (@PathVariable(value = "id") long id)
     {
@@ -34,6 +44,12 @@ public class  PacienteController {
         }
     }
 
+    /**
+     * Retorna todos os pacientes
+     *
+     *
+     * @return  retorna uma Response entity com status "Ok" e todos os pacientes ou "Erro"
+     */
     @RequestMapping(value = "/getAllPacientes", method =  RequestMethod.GET)
     public ResponseEntity getAllPacientes ()
     {
@@ -47,6 +63,12 @@ public class  PacienteController {
         }
     }
 
+    /**
+     * Retorna todos os pacientes de uma clínica específica
+     *
+     *
+     * @return  retorna uma Response entity com status "Ok" e os pacientes da clínica ou "Erro"
+     */
     @RequestMapping(value = "/getAllPacientesClinica", method =  RequestMethod.GET)
     public ResponseEntity getAllPacientesClinica()
     {
@@ -64,6 +86,13 @@ public class  PacienteController {
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Retorna todos os pacientes do Pronto Socorro
+     *
+     *
+     * @return  retorna uma Response entity com status "Ok" e os pacientes do pronto socorro ou "Erro"
+     */
 
     @RequestMapping(value = "/getAllPacientesProntoSocorro", method =  RequestMethod.GET)
     public ResponseEntity getAllPacientesProntoSocorro()
@@ -83,6 +112,13 @@ public class  PacienteController {
         }
     }
 
+    /**
+     * Cadastra um paciente no banco de dados
+     *
+     * @param Paciente Recebe um parâmetro da classe "Paciente"
+     *
+     * @return  retorna uma Response entity com status "Ok" e o paciente salvo ou "Erro"
+     */
     @RequestMapping(value = "", method =  RequestMethod.POST)
     public ResponseEntity cadastrarPaciente (@RequestBody Paciente paciente)
     {
@@ -100,6 +136,13 @@ public class  PacienteController {
         }        
     }
 
+    /**
+     * Atualiza o cadastro de um paciente
+     *
+     * @param long Recebe o ID de um paciente
+     *
+     * @return  retorna uma Response entity com status "Ok" e o paciente atualizado ou "Erro"
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity atualizarPaciente(@RequestBody Paciente paciente, @PathVariable(value = "id") long id) {
         try{
@@ -117,8 +160,15 @@ public class  PacienteController {
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
+    /**
+     * Deleta um paciente
+     *
+     * @param long Recebe o ID de um paciente
+     *
+     * @return  retorna uma Response entity com status "Ok" ou "Erro"
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deletarPaciente(@PathVariable(value = "id") long id) {
         try{

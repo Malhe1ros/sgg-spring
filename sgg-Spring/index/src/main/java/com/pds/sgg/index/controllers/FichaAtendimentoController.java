@@ -11,10 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pds.sgg.index.entity.pessoa.fichaAtendimento.FichaAtendimento;
 import com.pds.sgg.index.repository.DatabaseConnection.Database;
-
+/**
+ * Controller responsável pelas rotas das fichas de atendimento
+ */
 @RestController
 @RequestMapping("/fichasAtendimento")
 public class FichaAtendimentoController {
+    /**
+     * Retorna todas as fichas de atendimento de um paciente
+     *
+     * @param long Recebe o ID do paciente
+     *
+     * @return  retorna uma Response entity com status "Ok" e as fichas de atendimento ou "Erro"
+     */
     @RequestMapping(value = "/getFichasAtendimentoByPaciente/{id}", method =  RequestMethod.GET)
     public ResponseEntity getFichasAtendimentoByPaciente (@PathVariable(value = "id") long id)
     {
@@ -27,6 +36,11 @@ public class FichaAtendimentoController {
         }
     }
 
+    /**
+     * Retorna todas as fichas de atendimento
+     *
+     * @return  retorna uma Response entity com status "Ok" e as fichas de atendimento ou "Erro"
+     */
     @RequestMapping(value = "/getAllFichasAtendimento/all", method =  RequestMethod.GET)
     public ResponseEntity getAllFichasAtendimento ()
     {
@@ -38,8 +52,15 @@ public class FichaAtendimentoController {
 
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
+    /**
+     * Deleta uma ficha de atendimento
+     *
+     * @param long Recebe o ID da ficha
+     *
+     * @return  retorna uma Response entity com status "Ok" ou "Erro"
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deletarFichaAtendimento(@PathVariable(value = "id") long id) {
         try{

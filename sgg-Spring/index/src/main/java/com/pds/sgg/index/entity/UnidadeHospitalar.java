@@ -5,6 +5,9 @@ import com.pds.sgg.index.entity.pessoa.paciente.Paciente;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Interface utilizada para as unidades hospitalares
+ */
 public interface UnidadeHospitalar {
     public Long getId();
     public Set<Paciente> getIdsPacientes();

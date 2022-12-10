@@ -12,9 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Controller responsável pelas operações das rotas dos médicos
+ */
 @RestController
 @RequestMapping("/medico")
 public class MedicoController {
+    /**
+     * Retorna todos os médicos cadastrados
+     *
+     * @return  retorna uma Response entity com status "Ok" e os médicos ou "Erro"
+     */
     @RequestMapping(value = "/getAllMedicos", method =  RequestMethod.GET)
     public ResponseEntity getAllMedicos ()
     {
@@ -27,6 +35,13 @@ public class MedicoController {
         }
     }
 
+    /**
+     * Retorna um médico específico
+     *
+     * @param long Recebe o ID do médico
+     *
+     * @return  retorna uma Response entity com status "Ok" e o médico ou "Erro"
+     */
     @RequestMapping(value = "/getMedicoById/{id}", method =  RequestMethod.GET)
     public ResponseEntity getMedicoById (@PathVariable(value = "id") long id)
     {
@@ -37,8 +52,15 @@ public class MedicoController {
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
+    /**
+     * Cadastra um médico no banco de dados
+     *
+     * @param Medico Recebe a classe "médico"
+     *
+     * @return  retorna uma Response entity com status "Ok" e o médico cadastrado ou "Erro"
+     */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity cadastrarMedico(@RequestBody Medico medico) {
         try{
@@ -48,8 +70,15 @@ public class MedicoController {
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
+    /**
+     * Atualiza os dados de um Médico específico
+     *
+     * @param long Recebe o ID do médico
+     *
+     * @return  retorna uma Response entity com status "Ok" e o médico ou "Erro"
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity atualizarMedico(@RequestBody Medico medico, @PathVariable(value = "id") long id) {
         try{
@@ -71,8 +100,15 @@ public class MedicoController {
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
+    /**
+     * Deleta um médico específico
+     *
+     * @param long Recebe o ID do médico
+     *
+     * @return  retorna uma Response entity com status "Ok" ou "Erro"
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deletarMedico(@PathVariable(value = "id") long id) {
         try{

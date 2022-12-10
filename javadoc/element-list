@@ -1,0 +1,13 @@
+com.pds.sgg.index
+com.pds.sgg.index.controllers
+com.pds.sgg.index.entity
+com.pds.sgg.index.entity.pessoa
+com.pds.sgg.index.entity.pessoa.fichaAtendimento
+com.pds.sgg.index.entity.pessoa.medico
+com.pds.sgg.index.entity.pessoa.paciente
+com.pds.sgg.index.repository
+com.pds.sgg.index.repository.DatabaseConnection
+com.pds.sgg.index.repository.pessoa
+com.pds.sgg.index.repository.pessoa.fichaAtendimento
+com.pds.sgg.index.repository.pessoa.medico
+com.pds.sgg.index.repository.pessoa.paciente

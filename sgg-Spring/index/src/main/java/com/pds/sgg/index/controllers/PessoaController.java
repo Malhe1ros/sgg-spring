@@ -13,9 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller Responsável pelas rotas de Pessoa
+ */
 @RestController
 @RequestMapping("/pessoa")
 public class PessoaController {
+    /**
+     * Retorna uma pessoa específica
+     *
+     * @param long Recebe o ID de uma pessoa
+     *
+     * @return  retorna uma Response entity com status "Ok" e a pessoa ou "Erro"
+     */
     @RequestMapping(value = "/getPessoaById/{id}", method =  RequestMethod.GET)
     public ResponseEntity getPessoaById (@PathVariable(value = "id") long id)
     {
@@ -32,6 +42,12 @@ public class PessoaController {
         }
     }
 
+    /**
+     * Retorna todas as pessoas
+     *
+     *
+     * @return  retorna uma Response entity com status "Ok" e as pessoas ou "Erro"
+     */
     @RequestMapping(value = "/getAllPessoas", method =  RequestMethod.GET)
     public ResponseEntity getAllPessoas ()
     {
@@ -45,6 +61,13 @@ public class PessoaController {
         }
     }
 
+    /**
+     * Cadastra uma pessoa no banco de dados
+     *
+     * @param Pessoa Recebe um parâmetro do tipo Pessoa
+     *
+     * @return  retorna uma Response entity com status "Ok" e a pessoa cadastrada ou "Erro"
+     */
     @RequestMapping(value = "", method =  RequestMethod.POST)
     public ResponseEntity cadastrarPessoa (@RequestBody Pessoa pessoa)
     {
@@ -58,6 +81,13 @@ public class PessoaController {
         }
     }
 
+    /**
+     * Atualiza os dados de uma pessoa
+     *
+     * @param long Recebe o ID de uma pessoa
+     *
+     * @return  retorna uma Response entity com status "Ok" e a pessoa atualizada ou "Erro"
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity atualizarPessoa(@RequestBody Pessoa pessoa, @PathVariable(value = "id") long id) {
         try{
@@ -77,8 +107,15 @@ public class PessoaController {
         catch(Exception e){
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }    
+    }
 
+    /**
+     * Deleta uma pessoa do banco de dados
+     *
+     * @param long Recebe o ID de uma pessoa
+     *
+     * @return  retorna uma Response entity com status "Ok" ou "Erro"
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deletarPessoa(@PathVariable(value = "id") long id) {
         try{

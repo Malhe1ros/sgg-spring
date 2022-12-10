@@ -6,6 +6,9 @@ import javax.persistence.*;
 
 @Entity
 @Table
+/**
+ * Entidade das Consultas
+ */
 public class Consulta {
     @Id
     @SequenceGenerator(
